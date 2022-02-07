@@ -1,6 +1,5 @@
 #pragma once
 
-#include "switch_led_logic.h"
 #include <stdint.h>
 
 typedef void (*periodic_callbacks_f)(uint32_t);

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "mockboard_io.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "mockswitch_led_logic.h": "c",
+        "stdio.h": "c"
     }
 }

@@ -7,6 +7,7 @@
 #include "common_macros.h"
 #include "periodic_scheduler.h"
 #include "sj2_cli.h"
+#include "switch_led_logic.h"
 
 // 'static' to make these functions 'private' to this file
 static void create_blinky_tasks(void);
@@ -17,6 +18,7 @@ static void uart_task(void *params);
 int main(void) {
   create_blinky_tasks();
   create_uart_task();
+  // switch_led_logic_initialize();
 
   // If you have the ESP32 wifi module soldered on the board, you can try uncommenting this code
   // See esp32/README.md for more details
@@ -34,7 +36,7 @@ static void create_blinky_tasks(void) {
    * Use '#if (1)' if you wish to observe how two tasks can blink LEDs
    * Use '#if (0)' if you wish to use the 'periodic_scheduler.h' that will spawn 4 periodic tasks, one for each LED
    */
-#if (1)
+#if (0)
   // These variables should not go out of scope because the 'blink_task' will reference this memory
   static gpio_s led0, led1;
 

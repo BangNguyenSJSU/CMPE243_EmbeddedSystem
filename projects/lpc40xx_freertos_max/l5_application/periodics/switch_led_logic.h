@@ -1,3 +1,5 @@
+//
+
 #pragma once
 
 #include "board_io.h"
@@ -5,7 +7,9 @@
 #include <stdint.h>
 
 /* Initialize function for switch and LED */
-void switch_led_logic__initialize();
+void switch_led_logic_initialize();
 
 /*  Switch LED Run Once */
-void switch_led_logic__run_once();
+void switch_led_logic_run_once();
+
+// projects\lpc40xx_freertos\l5_application\periodics\switch_led_logic.h
