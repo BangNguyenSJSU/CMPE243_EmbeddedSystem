@@ -25,6 +25,7 @@ void test__periodic_callbacks__initialize(void) {
   periodic_callbacks__initialize();
 
   /* it has the error if i call thes two function with this order  */
+
   // periodic_callbacks__initialize();
   //  switch_led_logic_initialize_Expect();
 }

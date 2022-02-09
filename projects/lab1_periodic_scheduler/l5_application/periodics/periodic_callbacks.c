@@ -4,6 +4,7 @@
 #include "gpio.h"
 #include "switch_led_logic.h"
 #include "task.h"
+#include <stdint.h>
 
 /******************************************************************************
  * Your board will reset if the periodic function does not return within its deadline
@@ -16,21 +17,25 @@ void periodic_callbacks__initialize(void) {
 }
 
 void periodic_callbacks__1Hz(uint32_t callback_count) {
+
   gpio__toggle(board_io__get_led0());
+
+  /* Adding Code here */
   switch_led_logic_run_once();
 
   if (callback_count >= 5) {
     vTaskDelay(1000);
   }
-  // switch_led_logic_run_once();
-  // Add your code here
 }
 
 void periodic_callbacks__10Hz(uint32_t callback_count) {
+
   gpio__toggle(board_io__get_led1());
   // Add your code here
 }
+
 void periodic_callbacks__100Hz(uint32_t callback_count) {
+
   gpio__toggle(board_io__get_led2());
   // Add your code here
 }
@@ -41,6 +46,7 @@ void periodic_callbacks__100Hz(uint32_t callback_count) {
  * This may be disabled based on intialization of periodic_scheduler__initialize()
  */
 void periodic_callbacks__1000Hz(uint32_t callback_count) {
+
   gpio__toggle(board_io__get_led3());
   // Add your code here
 }
