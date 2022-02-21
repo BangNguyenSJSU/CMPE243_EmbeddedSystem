@@ -6,16 +6,24 @@
 
 #include "queue_lab.h"
 
+//--------------------------------- Helper fucntion -------------------------
+
+static bool queue__isFULL(queue_s *queue) { return queue->current_capacity == queue->max_capacity ? true : false; }
+
+static bool queue__isEMPTY(queue_s *queue) { return 0 == queue->current_capacity ? true : false; }
+
+// ---------------------------------------------------------------------------
+
 // This should initialize all members of queue_s
 void queue__init(queue_s *queue) {
 
   // If *queue != NULL ??? How to do it ?
   if (queue != NULL) {
 
-    queue->queue_capacity = 100;
-    queue->queue_size = 0;
+    queue->max_capacity = 100;
+    queue->current_capacity = 0;
     queue->head_item_index = 0;
-    queue->tail_item_index = 0;
+    queue->tail_item_index = -1;
 
     // Init all the array with 0
     uint8_t counter = 0;
@@ -27,38 +35,43 @@ void queue__init(queue_s *queue) {
 }
 
 /// @returns false if the queue is full
+// always add thing in tail of the queue and update tail
 bool queue__push(queue_s *queue, uint8_t push_value) {
 
-  // first time
-  if (0 == queue->queue_size) {
-    queue->queue_memory[queue->queue_size] = push_value;
-    queue->queue_size++;
-    return true;
-  }
-  // queue still have space
-  if (0 != queue->queue_size && (queue->queue_size < queue->queue_capacity)) {
+  if (!queue__isFULL(queue)) {
+    /*
+     Note :
+      --> First push item tail_item_index = (-1 + 1 ) % 100 = 0
 
-    queue->tail_item_index = queue->queue_size;
+      --> 103 Times, push item tail_item_index = (-1 + 103) % 100 = 2
+    */
+    // Update a new tail index
+    queue->tail_item_index = (queue->tail_item_index + 1) % queue->max_capacity;
+    // Update value
     queue->queue_memory[queue->tail_item_index] = push_value;
-    queue->queue_size++;
-    return true;
-  }
+    // Update size
+    queue->current_capacity++;
 
-  // queue FULL
-  return false;
+    return true;
+  } else {
+    // queue FULL
+    return false;
+  }
 }
 
 /// @returns false if the queue was empty
+// always remove thing in head of the queue and update head
 bool queue__pop(queue_s *queue, uint8_t *pop_value) {
 
-  if (0 != queue->queue_size) {
-
+  if (!queue__isEMPTY(queue)) {
+    // Remove the value
     *pop_value = queue->queue_memory[queue->head_item_index];
-    queue->queue_size--;
 
-    for (int i = 0; i < queue->queue_size; i++) {
-      queue->queue_memory[i] = queue->queue_memory[i + 1];
-    }
+    // Update new head index
+    queue->head_item_index = (queue->head_item_index + 1) % queue->max_capacity;
+
+    // Update size
+    queue->current_capacity--;
 
     return true;
   } else {
@@ -67,4 +80,4 @@ bool queue__pop(queue_s *queue, uint8_t *pop_value) {
 }
 
 /// @returns number of item inside queue
-size_t queue__get_item_count(const queue_s *queue) { return queue->queue_size; }
+size_t queue__get_item_count(const queue_s *queue) { return queue->current_capacity; }

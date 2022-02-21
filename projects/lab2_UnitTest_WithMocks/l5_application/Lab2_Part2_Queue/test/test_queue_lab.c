@@ -19,12 +19,12 @@ void test_queue__init(void) {
   queue__init(&test_obj_queue);
 
   // Test current index
-  TEST_ASSERT_EQUAL_UINT8(100, test_obj_queue.queue_capacity);
-  TEST_ASSERT_EQUAL_UINT8(0, test_obj_queue.queue_size);
+  TEST_ASSERT_EQUAL_UINT8(100, test_obj_queue.max_capacity);
+  TEST_ASSERT_EQUAL_UINT8(0, test_obj_queue.current_capacity);
 
   // Test Init head and tail
-  TEST_ASSERT_EQUAL_UINT8(0, test_obj_queue.head_item_index);
-  TEST_ASSERT_EQUAL_UINT8(0, test_obj_queue.head_item_index);
+  TEST_ASSERT_EQUAL_INT(0, test_obj_queue.head_item_index);
+  TEST_ASSERT_EQUAL_INT(-1, test_obj_queue.tail_item_index);
 
   // Test all the array init with 0 or NOT
   for (int i = 0; i < 100; i++) {

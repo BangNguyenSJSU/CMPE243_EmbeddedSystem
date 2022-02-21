@@ -15,12 +15,12 @@ typedef struct {
 
   uint8_t queue_memory[100];
   // Keep track size
-  uint8_t queue_capacity;
-  uint8_t queue_size;
+  uint8_t max_capacity;
+  uint8_t current_capacity;
 
   // Keep track head and tail
-  uint8_t head_item_index;
-  uint8_t tail_item_index;
+  int head_item_index;
+  int tail_item_index;
 } queue_s;
 
 // This should initialize all members of queue_s
