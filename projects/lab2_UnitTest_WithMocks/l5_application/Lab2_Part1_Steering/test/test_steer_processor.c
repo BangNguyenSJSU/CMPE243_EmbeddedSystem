@@ -30,13 +30,11 @@ void test_steer_processor__both_sensors_less_than_threshold_butEqual(void) {
   steer_processor(67, 75);
 }
 
-
 void test_steer_processor__both_sensors_more_than_threshold(void) {
   steer_left_Ignore();
   steer_right_Ignore();
   steer_processor(65, 75);
 }
-
 
 void test_steer_processor(void) {
   steer_right_Expect();
