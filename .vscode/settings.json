@@ -4,6 +4,8 @@
         "stdint.h": "c",
         "mockswitch_led_logic.h": "c",
         "stdio.h": "c",
-        "lpc40xx.h": "c"
+        "lpc40xx.h": "c",
+        "stddef.h": "c",
+        "unity.h": "c"
     }
 }
