@@ -34,6 +34,7 @@ bool line_buffer__init(line_buffer_s *line_buffer, char *memory, size_t size) {
     line_buffer->memory = memory;
     line_buffer->write_index = 0;
     line_buffer->new_line_char = false;
+    line_buffer->new_line_char_index = -1;
     line_buffer->head_index = 0;
     line_buffer->tail_index = -1;
 
@@ -55,6 +56,7 @@ bool line_buffer__add_byte(line_buffer_s *line_buffer, char byte) {
 
     // Identify the index of '\n'
     if (line_buffer->memory[line_buffer->tail_index] == '\n') {
+      line_buffer->new_line_char_index = line_buffer->tail_index;
       line_buffer->new_line_char = true;
     }
 

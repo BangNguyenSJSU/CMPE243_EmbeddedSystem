@@ -13,6 +13,7 @@ typedef struct {
   char *memory;
   size_t max_size;
   size_t write_index;
+  size_t new_line_char_index;
 
   size_t head_index; // always pop from head
   size_t tail_index; // alway push into tail
