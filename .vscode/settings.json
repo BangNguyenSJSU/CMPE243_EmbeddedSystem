@@ -6,6 +6,9 @@
         "stdio.h": "c",
         "lpc40xx.h": "c",
         "stddef.h": "c",
-        "unity.h": "c"
+        "unity.h": "c",
+        "charconv": "c",
+        "mockgpio.h": "c",
+        "mockcan_bus_initializer.h": "c"
     }
 }

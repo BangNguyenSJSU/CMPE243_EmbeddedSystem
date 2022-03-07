@@ -47,11 +47,11 @@ typedef struct {
   union {
     uint32_t frame; ///< 32-bit CAN frame aligned with frame_fields (bit members)
     struct {
-      uint32_t : 16;         ///< Unused space [15:0]
-      uint32_t data_len : 4; ///< Data length [19:16]
-      uint32_t : 10;         ///< Unused space[29:20]
-      uint32_t is_rtr : 1;   ///< Message is an RTR type [30]
-      uint32_t is_29bit : 1; ///< If message ID is 29-bit type [31]
+      uint32_t : 16;         ///< Unused space
+      uint32_t data_len : 4; ///< Data length
+      uint32_t : 10;         ///< Unused space
+      uint32_t is_rtr : 1;   ///< Message is an RTR type
+      uint32_t is_29bit : 1; ///< If message ID is 29-bit type
     } frame_fields;
   };
 
