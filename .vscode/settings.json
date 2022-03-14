@@ -9,6 +9,8 @@
         "unity.h": "c",
         "charconv": "c",
         "mockgpio.h": "c",
-        "mockcan_bus_initializer.h": "c"
+        "mockcan_bus_initializer.h": "c",
+        "dbc.h": "c",
+        "canlab.h": "c"
     }
 }
